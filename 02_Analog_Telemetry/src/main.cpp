@@ -1,33 +1,26 @@
 #include <Arduino.h>
 
-// We use 'A0' because it's an Analog Input pin
-const int sensorPin = A0; 
+const int SENSOR_PIN = A0;
+const int LED_NORMAL = 12; // Green
+const int LED_ALARM = 11;  // Red
+const int THRESHOLD = 920; // 90% mark
 
 void setup() {
-  // Start the serial pipe at 9600 bits per second
-  Serial.begin(9600); 
-  Serial.println("--- SYSTEM INITIALIZED: READING FIELD DATA ---");
+    pinMode(LED_NORMAL, OUTPUT);
+    pinMode(LED_ALARM, OUTPUT);
+    Serial.begin(9600);
 }
 
-
-// Added conditional logic layer to simulate a threshold which will what is normal or not normal
-// similar to how a water or even a chemical tank level system needs to "scream" or alert if it hit 90%
 void loop() {
-int rawValue = analogRead(A0); 
-  int percentage = map(rawValue, 0, 1023, 0, 100);
-  
-  Serial.print("LEVEL: ");
-  Serial.print(percentage);
-  Serial.print("%");
-
-  // --- SAFETY LOGIC --- 
-  if (percentage > 90) {
-    Serial.println(" | [!] ALARM: CRITICAL HIGH LEVEL [!]");
-  } else if (percentage < 10) {
-    Serial.println(" | [!] ALARM: LOW FEED DETECTED [!]");
-  } else {
-    Serial.println(" | System Nominal");
-  }
-
-  delay(200);
+    int val = analogRead(SENSOR_PIN);
+    
+    if (val >= THRESHOLD) {
+        digitalWrite(LED_ALARM, HIGH);
+        digitalWrite(LED_NORMAL, LOW);
+        Serial.println("!!! CRITICAL THRESHOLD REACHED !!!");
+    } else {
+        digitalWrite(LED_ALARM, LOW);
+        digitalWrite(LED_NORMAL, HIGH);
+    }
+    delay(50); 
 }
