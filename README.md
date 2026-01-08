@@ -17,7 +17,9 @@ The core objective of this lab is to build a documented history of technical gro
 ---
 
 ## Lab Roadmap (Project Index)
-This lab is organized by "Field Sessions." Each folder contains its own code, wiring diagrams, and a dedicated **Accordion-Style README** for deep dives.
+This lab is organized by "Field Sessions." Each folder contains its own code, recordings, screen shots, photos, and a dedicated **Accordion-Style README** for deep dives. 
+
+Note: wiring diagrams will be added upon completion and tested.
 
 | Session | Title                                     | Key Learning Objective                      | Status             |
 |---------|-------------------------------------------|---------------------------------------------|--------------------|
