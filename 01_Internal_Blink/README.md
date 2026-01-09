@@ -2,7 +2,7 @@ Todays Learning - Bridging the digital world and the physical world - 01/01/2026
 
 Goal: 
 
-Use a Arduino UNO R3 board and connect it my MacBook. 
+- Use a Arduino UNO R3 board and connect it my MacBook. 
 
 Learning Notes: 
 
