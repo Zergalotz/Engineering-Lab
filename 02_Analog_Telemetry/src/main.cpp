@@ -1,8 +1,8 @@
 #include <Arduino.h>
 
 const int SENSOR_PIN = A0;
-const int LED_NORMAL = 12; // Green
-const int LED_ALARM = 11;  // Red
+const int LED_NORMAL = 12; // Green. To indicated System is within normal range
+const int LED_ALARM = 11;  // Red. To indicatd System is out of normal range
 const int THRESHOLD = 920; // 90% mark
 
 void setup() {
