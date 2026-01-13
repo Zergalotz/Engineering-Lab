@@ -21,11 +21,11 @@ This lab is organized by "Field Sessions." Each folder contains its own code, re
 
 Note: wiring diagrams will be added upon completion and tested.
 
-| Session | Title                                     | Key Learning Objective                      | Status             |
-|---------|-------------------------------------------|---------------------------------------------|--------------------|
-| **01**  | [Internal Blink](./01_Internal_Blink)     | Digital Neighborhood & Internal Clock Logic | ✅ Complete        |
-| **02**  | [Analog Telemetry](./02_Analog_Telemetry) | ADC Mapping, Potentiometers, and LED Alarms | 🚧 In Progress     |
-| **03**  | **Environmental Sensing**                 | I2C Protocol & Thermal Threshold Monitoring | 📅 Upcoming        |
+| Session | Title                                     | Key Learning Objective                              | Status             |
+|---------|-------------------------------------------|-----------------------------------------------------|--------------------|
+| **01**  | [Internal Blink](./01_Internal_Blink)     | Digital Neighborhood & Internal Clock Logic         | ✅ Complete        |
+| **02**  | [Analog Telemetry](./02_Analog_Telemetry) | ADC Mapping, Potentiometers, Message Warning Alerts | ✅ Complete        |
+| **03**  | **Environmental Sensing**                 | I2C Protocol & Thermal Threshold Monitoring         | 📅 Upcoming        |
 
 ---
 
