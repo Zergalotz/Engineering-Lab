@@ -26,6 +26,7 @@ Note: wiring diagrams will be added upon completion and tested.
 | **01**  | [Internal Blink](./01_Internal_Blink)     | Digital Neighborhood & Internal Clock Logic         | ✅ Complete        |
 | **02**  | [Analog Telemetry](./02_Analog_Telemetry) | ADC Mapping, Potentiometers, Message Warning Alerts | ✅ Complete        |
 | **03**  | **Environmental Sensing**                 | I2C Protocol & Thermal Threshold Monitoring         | 📅 Upcoming        |
+| **04**  |                                           |                                                     |                    |
 
 ---
 
