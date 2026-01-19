@@ -10,14 +10,14 @@ Rather than just a collection of code, this lab is a chronological record of how
 ## Mission & Intentions
 The core objective of this lab is to build a documented history of technical growth across three critical domains:
 
-* **The Physical Neighborhoods:** Mastering power distribution, analog sensing, and digital actuation on the Arduino Uno platform.
+* **The Physical Neighborhoods:** Mastering power distribution, analog sensing, and digital actuation on the Elegoo Uno platform (Arduino Uno may be used as well).
 * **System Reliability:** Moving from "hobbyist" sketches to professional, non-blocking, and fail-safe industrial code (C++ and PlatformIO).
 * **The Software-Hardware Bridge:** Utilizing Python for data logging, telemetry visualization, and AI-assisted development to solve real-world problems.
 
 ---
 
 ## Lab Roadmap (Project Index)
-This lab is organized by "Field Sessions." Each folder contains its own code, recordings, screen shots, photos, and a dedicated **Accordion-Style README** for deep dives. 
+This lab is organized by "Field Sessions." Each folder contains its own code, recordings, screen shots, photos, and a dedicated **Accordion-Style and Systems-Architect READMEs** for deep dives. 
 
 Note: wiring diagrams will be added upon completion and tested.
 
