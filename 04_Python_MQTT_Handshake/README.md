@@ -1,28 +1,22 @@
 # Session 04: Python MQTT Infrastructure Bridge
 
-## Overview
+1. Objective
 This sub-project implements the **Bridge Layer** for the Texas Smart Water Grid simulation. It serves as the translator between field hardware (simulated in Python) and the Enterprise Control Room (Java).
 
-## System Architecture
+2. Technical Specifications & "Knowledge Lock"
+This session moved beyond basic scripting into Industrial Protocol Reliability. Key engineering concepts implemented include:
 
+Last Will and Testament (LWT): Configured the broker to automatically publish an OFFLINE_CRITICAL message if the Python bridge loses power or network connectivity. This ensures "Silent Failures" are detected immediately.
 
-- **Role:** Data Producer / Protocol Bridge
-- **Protocol:** MQTT 5.0
-- **Safety Level:** Fail-Safe Enabled (LWT)
+Message Retention: Set the retain flag on status messages. This ensures that any new service (like our future Java Backend) immediately knows the current state of the sensor upon startup without waiting for the next heart-beat.
 
-## Technical Objectives
-* **Persistent Handshaking:** Establish a resilient connection to the Mosquitto Broker.
-* **Asynchronous Telemetry:** Non-blocking sensor polling using `paho-mqtt` loop structures.
-* **Reliability (QoS 1):** Guaranteed delivery for critical pressure threshold alerts.
-* **Infrastructure Awareness:** Implementing 'Last Will and Testament' to detect hardware brownouts.
+Quality of Service (QoS 1): Implemented a two-way handshake (PUB -> PUBACK) to guarantee that critical pressure data is acknowledged by the broker at least once, even on unstable municipal networks.
 
-## Setup & Virtual Environment
-This project uses a local `.venv` to isolate industrial dependencies.
+JSON Serialization: Standardized telemetry data into a structured JSON envelope containing sensor_id, psi, and ISO-8601 timestamps.
 
-```bash
-# Initialize and activate the "Workstation"
-python3 -m venv .venv
-source .venv/bin/activate
+3. Verification (Proof of Work)
+Handshake Test: Terminal logs confirm successful CONNACK from the local Mosquitto broker.
 
-# Install the Handshake Tooling
-pip install paho-mqtt
+Failure Simulation: Manually terminating the script triggers the LWT message on the subscriber client, verifying the "Dead-Man's Switch" logic.
+
+Data Integrity: Verified that the outgoing JSON payload is valid and readable by standard industrial parsers.
