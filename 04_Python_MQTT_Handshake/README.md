@@ -1,22 +1,54 @@
-# Session 04: Python MQTT Infrastructure Bridge
+Session 04: Python-MQTT Handshake & Infrastructure
+Project: Conroe Water Grid - IoT Integration
 
-1. Objective
-This sub-project implements the **Bridge Layer** for the Texas Smart Water Grid simulation. It serves as the translator between field hardware (simulated in Python) and the Enterprise Control Room (Java).
+Objective: Establish a resilient connection between a Python-based sensor simulator and a Dockerized MQTT Broker.
 
-2. Technical Specifications & "Knowledge Lock"
-This session moved beyond basic scripting into Industrial Protocol Reliability. Key engineering concepts implemented include:
+Tech Stack
+Language: Python 3.12+
 
-Last Will and Testament (LWT): Configured the broker to automatically publish an OFFLINE_CRITICAL message if the Python bridge loses power or network connectivity. This ensures "Silent Failures" are detected immediately.
+Library: paho-mqtt (Version 2.x)
 
-Message Retention: Set the retain flag on status messages. This ensures that any new service (like our future Java Backend) immediately knows the current state of the sensor upon startup without waiting for the next heart-beat.
+Infrastructure: Docker (Mosquitto 2.0+ Broker)
 
-Quality of Service (QoS 1): Implemented a two-way handshake (PUB -> PUBACK) to guarantee that critical pressure data is acknowledged by the broker at least once, even on unstable municipal networks.
+Protocol: MQTT v5.0
 
-JSON Serialization: Standardized telemetry data into a structured JSON envelope containing sensor_id, psi, and ISO-8601 timestamps.
+ Setup & Installation
+1. The Broker (Docker)
+Due to security updates in Mosquitto 2.0, the broker is configured to allow anonymous local connections and listen on IPv4.
 
-3. Verification (Proof of Work)
-Handshake Test: Terminal logs confirm successful CONNACK from the local Mosquitto broker.
+Start the Broker:
+docker run -d --name mosquitto -p 1883:1883 eclipse-mosquitto mosquitto -c /mosquitto/config/mosquitto.conf --allow-anonymous --listener 1883
 
-Failure Simulation: Manually terminating the script triggers the LWT message on the subscriber client, verifying the "Dead-Man's Switch" logic.
+2. The Python Environment
+# Activate virtual environment
+source .venv/bin/activate
 
-Data Integrity: Verified that the outgoing JSON payload is valid and readable by standard industrial parsers.
+# Install dependencies
+pip install paho-mqtt
+
+The Handshake Logic
+We utilized the Paho-MQTT Version 2.0 API. Note the mandatory reason_code parameter in the on_connect callback.
+
+def on_connect(client, userdata, flags, reason_code, properties=None):
+    if reason_code == 0:
+        print("✅ SUCCESS: Connected to Conroe Grid Broker")
+    else:
+        print(f"❌ Connection Refused. Code: {reason_code}")
+
+Troubleshooting (The "Senior" Log)
+During development, we encountered and resolved the following "Infrastructure Friction":
+
+------------------------------------------------------------------------------------------------------------------------------------
+Error                         | Cause                         | Resolution
+------------------------------------------------------------------------------------------------------------------------------------
+[Errno 61] Connection refused | "Broker was in "Secure Mode"" | Added --allow-anonymous --listener 1883 to Docker start command.
+------------------------------------------------------------------------------------------------------------------------------------
+localhost resolution failure  | Mac IPv6/IPv4 conflict        | Switched BROKER address to 127.0.0.1.
+------------------------------------------------------------------------------------------------------------------------------------
+DeprecationWarning (V1)       | Outdated API signature        | Migrated to CallbackAPIVersion.VERSION2.
+------------------------------------------------------------------------------------------------------------------------------------
+
+Verification
+To verify the data flow independently of the Python script, run the following command to subscribe to the stream:
+
+docker exec -it mosquitto mosquitto_sub -t "conroe/#" -v
