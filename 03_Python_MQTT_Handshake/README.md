@@ -1,7 +1,7 @@
 # Session 03: Python-MQTT Handshake & Infrastructure
-# Project: Conroe Water Grid - IoT Integration
+## Project: Conroe Water Grid - IoT Integration
 
-## Objective: Establish a resilient connection between a Python-based sensor simulator and a Dockerized MQTT Broker.
+ Objective: Establish a resilient connection between a Python-based sensor simulator and a Dockerized MQTT Broker.
 ### This session is the Publisher, the Sensor sending data, session. Session 4 will be the Historain portion refer to that README file for details.
 Tech Stack
 Language: Python 3.12+
