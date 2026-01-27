@@ -2,6 +2,8 @@ import paho.mqtt.client as mqtt
 import time
 import random
 
+# This is the Electronic Handshake for m2m (machine 2 machine) basic "skeleton"
+
 # Configuration
 BROKER = "127.0.0.1"
 PORT = 1883
