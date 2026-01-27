@@ -25,8 +25,8 @@ Note: wiring diagrams will be added upon completion and tested.
 |---------|-----------------------------------------------------|------------------------------------------------------|--------------------|
 | **01**  | [Internal Blink](./01_Internal_Blink)               | Digital Neighborhood & Internal Clock Logic          | ✅ Complete        |
 | **02**  | [Analog Telemetry](./02_Analog_Telemetry)           | ADC Mapping, Potentiometers, Message Warning Alerts  | ✅ Complete        |
-| **03**  | [Environmental Sensing](./03_Environmental_Sensing) | I2C Protocol & Thermal Threshold Monitoring          | 📅 Upcoming        |
-| **04**  | [Python MQTT Handshake](./04_Python_MQTT_Handshake) | Decoupled Pub/Sub, QoS Reliability, & LWT Fail-safes | In-Progress        |
+| **03**  | [Python MQTT Handshake](./03_Python_MQTT_Handshake) | Decoupled Pub/Sub, QoS Reliability, & LWT Fail-safes | ✅ Complete        |
+| **04**  | [Persistence Layer](./04_Persistence_Layer)         | Decoupled Pub/Sub, QoS Reliability, & LWT Fail-safes | ** Upcoming        |
 
 ---
 
