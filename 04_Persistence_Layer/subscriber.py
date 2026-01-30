@@ -1,9 +1,9 @@
 import paho.mqtt.client as mqtt
 import sqlite3
-from database_manger import DB_NAME
+from database_manager import DB_NAME
 
 # Configuration
-BROKER = "::1" #ip address 127.0.0.1
+BROKER = "::1" #ip address 127.0.0.1 or localhost
 TOPIC = "conroe/water/pressure"
 
 def save_to_db(topic, payload):

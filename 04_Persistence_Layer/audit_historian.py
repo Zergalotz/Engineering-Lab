@@ -1,6 +1,6 @@
 import sqlite3
 # This reaches into your other file to get the database name
-from database_manger import DB_NAME 
+from database_manager import DB_NAME 
 
 def read_telemetry():
     """Fetches and prints the last 10 logs from the database."""
