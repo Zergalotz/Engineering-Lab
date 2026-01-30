@@ -1,0 +1,44 @@
+For details on the use of built in methods for the db reference - https://docs.python.org/3/library/sqlite3.html
+
+Point of confusion/challenge when implementing. The is a example of a 50/50 split or birdge between pure SQL and Python.
+So, as I noticed and others might, the SQL inside of the quotes-like "CREATE TABLE" and "INSERT INTO"—is Standard SQL. 
+This is a universal language used by almost every database in the world (PostgreSQL, MySQL/Oracle, etc.).
+The Python aka "The Plumbing", are the words such as "conn", "cursor", and "excute". These are part of the Python SQLite 
+library. These are the "tools" used to talk to the SQL engine. 
+I didn't understand the different before but once I read the documentation from the source about + asking Gemini so 
+examples/ clarification it clicked. 
+
+Now we use SQLite3 over Spring/Spring boot. For this session, understanding what is actually happen is very important. 
+SQLite + Python == low abstration while Spring boot == high abstraction. Transparency vs Magic.
+
+Why is this important?
+
+It is based around if you want to "outsource" the work verse you need to take ownership of the work at every step.
+Spring Boot == the tools like Hibernate (an ORM), automatically creates the SQL + manages the connection + handles the cursor for you.
+You, as the engineer simple creating of the Java classes. That is why there is "magic" happening. 
+While, SQLite + Python == you are manually opening the conn, creating the cursor, and writing the raw INSERT INTO string.
+
+Spring Boot: if a database becomes slow, you don't know why because you didn't write the SQL-the "Magic" did. Additionally, it 
+needs a lot more resources to start up. This is ok when you working with large scale applications. i.e. server in a bank.
+
+SQLite + Python: you see every "moving part" and you know exactly when the file is opened adn when the data hits the disk.
+Additionally, it doesn't need a lot to start up, it is literally a small C-library. It uses almost zero RAM when idle.
+
+In the field of IoT and infrastructure, it is critical to know exactly what is happening and where in the flow it is occuring.
+If a tank or pipe burst, it is important to know when, where, and what the data provided at the time or leading up to.
+
+Side design/ architecture note:
+I am trying to grow my architecture and design muscles. So, keep in mind and if I am incorrect feel free to messages me in LinkedIn. 
+I like to learn and grow in my craft.
+
+Now, we could use PostgreSQl, but it would increase the amount of work that is needed for this simple session. At a 
+enterprise level use would PostgresSQl + Docker + MQTT (if you dealing with critical infrastructure). Now if you are working
+with an something like Spotify you use a different protocol in place of MQTT but the db and containization is the similar.
+
+Struggles:
+
+At first my session 4 was not working due to making the error of note adding a making sure name casing for database_manger was correct. 
+Classic numb mistake. I updated the incorrect spelling from database_manger to database_manager. That resolve the first issue.
+
+Second issue, having some struggles getting my docker and python to communicate. I have the correct broker/isp but it is not auditing the historian.
+I will review this issue agin to tomorrow and walk through the README steps again to ensure it is working correctly. Note resolve second issue yet.
