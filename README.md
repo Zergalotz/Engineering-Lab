@@ -26,7 +26,7 @@ Note: wiring diagrams will be added upon completion and tested.
 | **01**  | [Internal Blink](./01_Internal_Blink)               | Digital Neighborhood & Internal Clock Logic          | ✅ Complete        |
 | **02**  | [Analog Telemetry](./02_Analog_Telemetry)           | ADC Mapping, Potentiometers, Message Warning Alerts  | ✅ Complete        |
 | **03**  | [Python MQTT Handshake](./03_Python_MQTT_Handshake) | Decoupled Pub/Sub, QoS Reliability, & LWT Fail-safes | ✅ Complete        |
-| **04**  | [Date Persistence Layer](./04_Persistence_Layer)    | Decoupled SQLite historian to store asynchronous     | ** Upcoming        |
+| **04**  | [Date Persistence Layer](./04_Persistence_Layer)    | Decoupled SQLite historian to store asynchronous     | ** In-progress     |
 |         |                                                     | MQTT telemetry for long-term data logging.           |                    |
 | **05**  |  Planning and Designing this session                | Planning and identifying Key learning Objectives     | ** Upcoming        |
 
