@@ -1,13 +1,13 @@
 # Session 04: Industrial Historian & Persistence Layer
 
-## 🏗️ Architectural Overview
+## Architectural Overview
 This session implements the **Level 3 (Operations)** persistence layer for the Conroe Water Grid. By integrating a SQLite-based **Historian**, we transition the system from volatile real-time telemetry to long-term data logging and auditability.
 
 
 
 ---
 
-## 🛠️ Environment & Infrastructure Setup
+## Environment & Infrastructure Setup
 <details>
 <summary><b>1. Docker Broker Configuration (The "Pipe")</b></summary>
 
@@ -20,7 +20,7 @@ Before executing telemetry scripts, the MQTT Broker must be active.
 
 ---
 
-## 📜 Component Inventory
+## Component Inventory
 This session utilizes a decoupled three-tier script architecture:
 
 1. **`database_manager.py` (The Librarian):** * **Role:** Initializes the SQLite schema and manages the telemetry table.
@@ -30,7 +30,7 @@ This session utilizes a decoupled three-tier script architecture:
 
 ---
 
-## 🚀 Execution Workflow
+## Execution Workflow
 To verify the system integration, execute the following steps in separate terminal instances:
 
 ### **Step 1: Initialize the Listener (Terminal 1)**
