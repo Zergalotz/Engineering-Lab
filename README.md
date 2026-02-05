@@ -1,43 +1,65 @@
-# Engineering-Lab: Systems & Automation Workshop
+# Engineering-Lab: Industrial Systems & Infrastructure Workshop
 
 ## Executive Summary
-This repository serves as my **centralized laboratory** for mastering embedded systems, industrial automation, and the bridge between software logic and physical hardware. It documents my **90/10 transition** from high-level software engineering to field-ready systems integration. 
+This repository is a **Centralized Engineering Laboratory** focused on the design, integration, and scaling of **Industrial IoT (IIoT)** and **Critical Infrastructure** systems. It documents my transition from traditional software development to **Full-Stack Systems Engineering**, specializing in the bridge between Level 0 (Physical Hardware) and Level 5 (Cloud/Enterprise).
 
-Rather than just a collection of code, this lab is a chronological record of how I apply software engineering rigor to physical electrical neighborhoods.
+While I an still keeping the skills I acquired in the traditional Web/App roles of software engineering I am just creating my specialization. Refer to previous paragraph.
 
----
-
-## Mission & Intentions
-The core objective of this lab is to build a documented history of technical growth across three critical domains:
-
-* **The Physical Neighborhoods:** Mastering power distribution, analog sensing, and digital actuation on the Elegoo Uno platform (Arduino Uno may be used as well).
-* **System Reliability:** Moving from "hobbyist" sketches to professional, non-blocking, and fail-safe industrial code (C++ and PlatformIO).
-* **The Software-Hardware Bridge:** Utilizing Python for data logging, telemetry visualization, and AI-assisted development to solve real-world problems.
+This lab serves as a chronological record of architectural decisions, emphasizing **system reliability, data integrity, and the Purdue Model of Industrial Control.**
 
 ---
 
-## Lab Roadmap (Project Index)
-This lab is organized by "Field Sessions." Each folder contains its own code, recordings, screen shots, photos, and a dedicated **Accordion-Style and Systems-Architect READMEs** for deep dives. 
+## Technical Stack & Architectural Standards
+<details>
+<summary><b>View Engineering Domain Expertise (Click to expand)</b></summary>
 
-Note: wiring diagrams will be added upon completion and tested.
+### **Languages & Frameworks**
+* **Embedded:** C++, Arduino/C (Low-level register manipulation & non-blocking logic).
+* **System Logic:** Python (Edge Gateways, Telemetry Processing, Async IO).
+* **Enterprise:** Java (OOP Architecture, Middleware, Persistence Layers).
 
-| Session | Title                                               | Key Learning Objective                               | Status             |
-|---------|-----------------------------------------------------|------------------------------------------------------|--------------------|
-| **01**  | [Internal Blink](./01_Internal_Blink)               | Digital Neighborhood & Internal Clock Logic          | ✅ Complete        |
-| **02**  | [Analog Telemetry](./02_Analog_Telemetry)           | ADC Mapping, Potentiometers, Message Warning Alerts  | ✅ Complete        |
-| **03**  | [Python MQTT Handshake](./03_Python_MQTT_Handshake) | Decoupled Pub/Sub, QoS Reliability, & LWT Fail-safes | ✅ Complete        |
-| **04**  | [Date Persistence Layer](./04_Persistence_Layer)    | Decoupled SQLite historian to store asynchronous     | ** In-progress     |
-|         |                                                     | MQTT telemetry for long-term data logging.           |                    |
-| **05**  |  Planning and Designing this session                | Planning and identifying Key learning Objectives     | ** Upcoming        |
+### **Infrastructure & Protocols**
+* **Connectivity:** MQTT (Pub/Sub), REST APIs, Modbus.
+* **Persistence:** SQL Historians (SQLite/PostgreSQL), Time-series Data Management.
+* **DevOps:** Docker (Containerization), PlatformIO, Git (CI/CD Ready).
+
+### **Methodologies**
+* **Architecture:** Purdue Model (Levels 0-3), Singleton Patterns, Composition over Inheritance.
+* **Standards:** Defensive programming, non-blocking I/O, and decoupled system design.
+</details>
+
+---
+
+## Project Evolution (Field Sessions)
+Each session is treated as a "System Module," containing isolated logic, documentation, and hardware schematics. 
+
+| Session | Title                                           | Level (Purdue) | Key Engineering Objective                                              | Status          |
+| :------ | :---------------------------------------------- | :------------- | :--------------------------------------------------------------------- | :-------------- |
+| **01**  | [Internal Blink](./01_Internal_Blink)           | L0/L1          | Digital Logic & Precision Clock Signaling                              | ✅ Complete     |
+| **02**  | [Analog Telemetry](./02_Analog_Telemetry)       | L1             | ADC Mapping, Signal Processing, & Warning Thresholds                   | ✅ Complete     |
+| **03**  | [MQTT Handshake](./03_Python_MQTT_Handshake)    | L2             | **Edge Gateway:** Decoupled Pub/Sub & QoS Reliability                  | ✅ Complete     |
+| **04**  | [Industrial Historian](./04_Persistence_Layer)  | L3             | **Data Integrity:** Implementing an Asynchronous SQL Persistence Layer | 🔄 In-Progress  |
+| **05**  | [Planning & Design](./05_Planning)              | N/A            | Defining System Requirements & Architectural Roadmap                   | 📅 Upcoming     |
 
 ---
 
-## Technical Standards
-All projects in this lab adhere to professional engineering standards:
-* **Encapsulated Assets:** All diagrams and media are stored in local `/assets` folders to ensure documentation stays portable.
-* **Optimized Git:** Utilizing `.gitignore` to maintain a clean, code-only remote presence (excluding build artifacts).
-* **Professional Documentation:** Using the **Accordion Method** to provide high-level clarity for recruiters while maintaining technical depth for engineers.
+## Design Philosophy
+* **The "Why" Before the "How":** Every session includes a **Design Decision Log (DDL)** to document the patterns (Singleton, Adapter, etc.) used to solve specific integration pains.
+* **Fault Isolation:** Using **Composition over Inheritance** to ensure that sensor failures do not cascade into system-wide crashes.
+* **Production Readiness:** Code is written to be **portable** (Docker-ready) and **documented** (Accordion-style) for rapid hand-off to cross-functional engineering teams.
 
 ---
-> **"Bridging the gap between the terminal and the circuit board."**
-> — *Developed by a Software Engineer dedicated to the physical world.*
+## Learning Notes Log (Knowledge Gather and Application)
+> **learning_notes.txt** There will be references that ties to the code files. This is to keep the code clean of indepth comments but provides a file where you can do into descriptive details.
+> **REF#** Which session that is being worked on.
+> **DATE** In order to track when it was learned.
+> **Format of Reference** REF# 01 [01/03/26 - 6:46 PM CST] a brief comment
+
+## Design Decision Log (Latest Entry)
+> **ID:** `DEC-002: Accordion Documentation Strategy`
+> **The Pain:** Recruiters need speed; Hiring Managers need depth.
+> **The Why:** Implemented `<details>` tags to provide a "Scalable" reading experience—enabling quick scanning without losing technical rigor.
+
+---
+> **"Engineering is the art of managing complexity through resilient architecture."**
+> — *Systems Integration & Infrastructure Engineer*
