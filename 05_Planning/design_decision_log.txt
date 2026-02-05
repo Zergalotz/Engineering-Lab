@@ -1,0 +1,3 @@
+ID: DEC-002: Accordion Documentation Strategy 
+The Pain: Recruiters need speed; Hiring Managers need depth. 
+The Why: Implemented, to provide a "Scalable" reading experience—enabling quick scanning without losing technical rigor.

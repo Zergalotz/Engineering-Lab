@@ -3,8 +3,6 @@
 ## Architectural Overview
 This session implements the **Level 3 (Operations)** persistence layer for the Conroe Water Grid. By integrating a SQLite-based **Historian**, we transition the system from volatile real-time telemetry to long-term data logging and auditability.
 
-
-
 ---
 
 ## Environment & Infrastructure Setup

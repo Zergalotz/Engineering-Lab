@@ -49,7 +49,7 @@ Each session is treated as a "System Module," containing isolated logic, documen
 ---
 
 ## Design Philosophy
-* **The "Why" Before the "How":** Every session includes a **Design Decision Log (DDL)** to document the patterns (Singleton, Adapter, etc.) used to solve specific integration pains.
+* **The "Why" Before the "How":** Every session (starting with session 05) includes a **Design Decision Log (DDL)** to document the patterns (Singleton, Adapter, etc.) used to solve specific integration pains.
 * **Fault Isolation:** Using **Composition over Inheritance** to ensure that sensor failures do not cascade into system-wide crashes.
 * **Production Readiness:** Code is written to be **portable** (Docker-ready) and **documented** (Accordion-style) for rapid hand-off to cross-functional engineering teams.
 
