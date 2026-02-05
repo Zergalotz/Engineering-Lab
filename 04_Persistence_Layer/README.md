@@ -1,63 +1,73 @@
-# 04_Persistence_Layer Session
+# Session 04: Industrial Historian & Persistence Layer
 
-CONROE WATER GRID: SESSION 5 MASTER BLUEPRINT
-1. THE ENVIRONMENT SETUP
-Before running any code, ensure the "Pipe" (Broker) is open.
+## 🏗️ Architectural Overview
+This session implements the **Level 3 (Operations)** persistence layer for the Conroe Water Grid. By integrating a SQLite-based **Historian**, we transition the system from volatile real-time telemetry to long-term data logging and auditability.
 
-Start Broker: docker run -d --name mosquitto -p 1883:1883 eclipse-mosquitto
 
-Check Health: docker ps
 
-Reset Broker (If it's acting up): docker rm -f mosquitto
+---
 
-2. THE COMPONENT SCRIPTS
-Make sure these 3 files are in: /Users/ghastlymac/.../04_Persistence_Layer/
+## 🛠️ Environment & Infrastructure Setup
+<details>
+<summary><b>1. Docker Broker Configuration (The "Pipe")</b></summary>
 
-File A: database_manager.py (The Librarian)
-Function: Creates the SQLite database file and the telemetry table.
+Before executing telemetry scripts, the MQTT Broker must be active.
 
-Variable to Check: DB_NAME = "conroe_water_grid.db"
+* **Start Broker:** `docker run -d --name mosquitto -p 1883:1883 eclipse-mosquitto`
+* **Check Health:** `docker ps`
+* **Reset Broker:** `docker rm -f mosquitto`
+</details>
 
-File B: subscriber.py (The Service)
-Function: Listens to MQTT and writes data to the Database.
+---
 
-Critical Config:
+## 📜 Component Inventory
+This session utilizes a decoupled three-tier script architecture:
 
-BROKER = "localhost" (Try "127.0.0.1" if "localhost" fails)
+1. **`database_manager.py` (The Librarian):** * **Role:** Initializes the SQLite schema and manages the telemetry table.
+   * **Target:** `conroe_water_grid.db`
+2. **`subscriber.py` (The L3 Service):** * **Role:** Bridges the gap between **Level 2 (Communication)** and **Level 3 (Persistence)**. Listens for telemetry on `conroe/water/pressure` and performs SQL inserts.
+3. **`audit_historian.py` (The Auditor):** * **Role:** Provides system transparency by querying the last 10 records sorted by timestamp.
 
-TOPIC = "conroe/water/pressure"
+---
 
-Must have client.loop_forever() at the bottom.
+## 🚀 Execution Workflow
+To verify the system integration, execute the following steps in separate terminal instances:
 
-File C: audit_historian.py (The Auditor)
-Function: Reads the database file and prints the results to your screen.
+### **Step 1: Initialize the Listener (Terminal 1)**
+Navigate to the session directory and start the subscriber service:
+`cd ./04_Persistence_Layer/`
+`python3 subscriber.py`
 
-Logic: SELECT * FROM telemetry ORDER BY timestamp DESC LIMIT 10
+### **Step 2: Simulate Field Telementry (Terminal 2)
+Publish a manual pressure reading to the MQTT broker:
+`docker exec -it mosquitto mosquitto_pub -h localhost -t conroe/water/pressure -m "95.5"`
 
-3. THE EXECUTION WORKFLOW
-Open three terminal windows/tabs and follow this order:
+### **Steo 3: Audit the Historian (Terminal 3)
+Verify that the data was successfully persisted to the database:
+`python3 audit_historian.py`
 
-STEP 1: NAVIGATE (Do this in all 3 terminals)
-cd ./Engineering-Lab/04_Persistence_Layer/
-# I removed my computers full path for privacy reasons...
+## Engineering Troubleshooting
+<details> <summary><b>View Common Error Resolutions</b></summary>
 
-STEP 2: THE LISTENER (Terminal 1)
-python3 subscriber.py
-# Leave this running. It should say "Subscriber active..."
+Dependency Missing: No module named 'paho' -> Run pip install paho-mqtt.
 
-STEP 3: THE PUBLISHER (Terminal 2)
-docker exec -it mosquitto mosquitto_pub -h localhost -t conroe/water/pressure -m "95.5"
-# Check Terminal 1 to see if "Logged to Historian" appears.
+Path Errors: No such file or directory -> Use pwd to ensure you are in the /04_Persistence_Layer/ directory.
 
-STEP 4: THE AUDITOR (Terminal 3)
-python3 audit_historian.py
-# This should print the rows showing your 95.5 PSI entry.
+Connectivity: Connection Refused -> Ensure Docker is running and the Mosquitto container is active (docker ps).
 
-4. QUICK TROUBLESHOOTING CHECKLIST
-"No module named 'paho'": Run pip install paho-mqtt.
+Resource Contention: If the database file is locked, ensure only one process is writing to the Historian at a time.
 
-"No such file or directory": Ensure your terminal is in the 04_Persistence_Layer folder.
+</details>
 
-"Connection Refused": Check if Docker is running (docker ps).
+## Design Decision Log
+Refer to the Design_Design_Log file in the session directory.
+> **Decession:** Decoupled Audit Logic.
+> **Why:** By separating audit_historian.py from the main subscriber.py, we ensure that data verification does not interfere with the high-frequency ingestion of telemetry.
 
-Typo Check: Ensure it is database_manager.py and not database_manger.py.
+### **Final Alignment Check**
+1. **Purdue Model:** References Level 2 and Level 3 correctly.
+2. **Bash Blocks:** Now use the proper triple-backtick formatting for easier copying.
+3. **Step Titles:** Now stand out with bold headers.
+
+**Does this version capture exactly what you need for your folder 04?**
+
