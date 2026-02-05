@@ -3,7 +3,7 @@
 ## Executive Summary
 This repository is a **Centralized Engineering Laboratory** focused on the design, integration, and scaling of **Industrial IoT (IIoT)** and **Critical Infrastructure** systems. It documents my transition from traditional software development to **Full-Stack Systems Engineering**, specializing in the bridge between Level 0 (Physical Hardware) and Level 5 (Cloud/Enterprise).
 
-While I an still keeping the skills I acquired in the traditional Web/App roles of software engineering I am just creating my specialization. Refer to previous paragraph.
+While I am still keeping the skills I acquired in the traditional Web/App roles of software engineering I am just creating my specialization. Refer to previous paragraph.
 
 This lab serves as a chronological record of architectural decisions, emphasizing **system reliability, data integrity, and the Purdue Model of Industrial Control.**
 
@@ -13,13 +13,18 @@ This lab serves as a chronological record of architectural decisions, emphasizin
 <details>
 <summary><b>View Engineering Domain Expertise (Click to expand)</b></summary>
 
+### **Tools & Extension**
+* **IDE:** VSCode, Arduino (as needed but trying to use a polyglot in VSCode).
+* **Extensions:** C/C++, BooST, Code Runner, Container Tools, ControlForge Structured Text, Debugger for Java, Dev Containers, Docker, Draw.io Integration, Extension Pack for java, GitHub Copilot, GitHub Copilot Chat, Language Support for Java(TM) by Red Hat, Maven for Java, Path Intellisense, PlatformIO IDE, Project Manager for Java, Pylance, Python, Python Debugger, Spring Boot Extension Pack, Spging Initializer Java Support, SQLTools, ST Formatter, Test Runner for Java, and VSMqtt. 
+
 ### **Languages & Frameworks**
 * **Embedded:** C++, Arduino/C (Low-level register manipulation & non-blocking logic).
 * **System Logic:** Python (Edge Gateways, Telemetry Processing, Async IO).
 * **Enterprise:** Java (OOP Architecture, Middleware, Persistence Layers).
+* **Frameworks:** Spring Boot (as needed per the sessions).
 
 ### **Infrastructure & Protocols**
-* **Connectivity:** MQTT (Pub/Sub), REST APIs, Modbus.
+* **Connectivity:** MQTT (Pub/Sub), REST APIs, Modbus, TCP.
 * **Persistence:** SQL Historians (SQLite/PostgreSQL), Time-series Data Management.
 * **DevOps:** Docker (Containerization), PlatformIO, Git (CI/CD Ready).
 
@@ -55,7 +60,8 @@ Each session is treated as a "System Module," containing isolated logic, documen
 > **DATE** In order to track when it was learned.
 > **Format of Reference** REF# 01 [01/03/26 - 6:46 PM CST] a brief comment
 
-## Design Decision Log (Latest Entry)
+## Design Decision Log (Latest Entry) 
+> **Design_Decision_Log** This will be the filename for the DDL.
 > **ID:** `DEC-002: Accordion Documentation Strategy`
 > **The Pain:** Recruiters need speed; Hiring Managers need depth.
 > **The Why:** Implemented `<details>` tags to provide a "Scalable" reading experience—enabling quick scanning without losing technical rigor.
